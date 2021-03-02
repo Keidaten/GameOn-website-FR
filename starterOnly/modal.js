@@ -35,6 +35,7 @@ const lastName = document.querySelector("#last");
 const eMail = document.querySelector("#email");
 const birthDate = document.querySelector("#birthdate");
 const quantityTourney = document.querySelector("#quantity");
+const formConfirmation = document.querySelector("#form-confirmation");
 
 //Error messages element
 const errorMsgFirstName = document.querySelector("#errorMsgFirstName");
@@ -44,7 +45,7 @@ const errorMsgTourney = document.querySelector("#errorMsgTourney");
 const errorMsgCity = document.querySelector("#errorMsgCity");
 const errorMsgCGU = document.querySelector("#errorMsgCGU");
 
-//create user feedback
+//create user feedbacks
 function feedbackMessage(errorElement, errorInnerText) {
     errorElement.innerText = errorInnerText;
     errorElement.style.fontSize = "65%";
@@ -54,6 +55,20 @@ function feedbackMessage(errorElement, errorInnerText) {
 function feedbackVisual(formDataElement, borderColor) {
     formDataElement.focus();
     formDataElement.style.borderColor = borderColor;
+}
+
+//Confirmation messages elements
+const header = document.getElementById("myTopnav");
+
+//Create user feedbacks
+function feedbackFormValid() {
+    let feedbackSpan = document.createElement("span");
+    feedbackSpan.innerText = "Merci ! Votre réservation a été reçue.";
+    feedbackSpan.style.backgroundColor = "lightgreen";
+    feedbackSpan.style.margin = "0px 20px 0px 20px";
+    feedbackSpan.style.padding = "10px";
+    feedbackSpan.style.textAlign = "Center";
+    header.insertAdjacentElement("afterend", feedbackSpan);
 }
 
 // Check if inputs are correct
@@ -67,7 +82,7 @@ let cguIsValid = false;
 //Check first name
 
 function verifyFirstName() {
-    if (!firstName.value.match(/^[a-z ,.'-]+$/i) || firstName.value.length < 2 || firstName.value == " " || firstName.value == null) {
+    if (!firstName.value.match(/^[a-z ,'-]+$/i) || firstName.value.length < 2 || firstName.value == " " || firstName.value == null) {
         feedbackMessage(errorMsgFirstName, "Veuillez vérifier votre prénom");
         feedbackVisual(firstName, "red");
     } else {
@@ -144,6 +159,7 @@ function verifyCGU() {
 }
 
 // Validate form
+
 function validate() {
     //call verifications
     verifyFirstName();
@@ -168,4 +184,9 @@ function validate() {
     if (firstNameIsValid == false || lastNameIsValid == false || emailIsValid == false || tourneyIsValid == false || cityIsValid == false || cguIsValid == false) {
         return false;
     }
+}
+
+//Display feedback if form submitted
+if (window.location.href.indexOf("?first=") > 1) {
+    feedbackFormValid();
 }
