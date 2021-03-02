@@ -65,9 +65,10 @@ function feedbackFormValid() {
     let feedbackSpan = document.createElement("span");
     feedbackSpan.innerText = "Merci ! Votre réservation a été reçue.";
     feedbackSpan.style.backgroundColor = "lightgreen";
-    feedbackSpan.style.margin = "0px 20px 0px 20px";
+    feedbackSpan.style.margin = "0px 40px 0px 40px";
     feedbackSpan.style.padding = "10px";
     feedbackSpan.style.textAlign = "Center";
+    feedbackSpan.style.borderRadius = "10px";
     header.insertAdjacentElement("afterend", feedbackSpan);
 }
 

@@ -27,13 +27,15 @@ p {
 }
 
 img {
-    padding-right: 1rem;
+    padding-right: 5rem;
+    max-width: 100%;
 }
 
 .topnav {
     overflow: hidden;
     margin: 3.5%;
 }
+
 .header-logo {
     float: left;
 }
@@ -76,11 +78,21 @@ img {
         float: right;
         display: block;
     }
+    .main-navbar {
+        position: absolute;
+        right: 15px;
+        z-index: 2;
+    }
+    .topnav {
+        overflow: visible;
+    }
 }
 
 @media screen and (max-width: 768px) {
-    .topnav.responsive {
-        position: relative;
+    .topnav.responsive .main-navbar {
+        /* position: relative; */
+        background-color: lightgrey;
+        border-radius: 15px;
     }
     .topnav.responsive .icon {
         position: absolute;
@@ -101,7 +113,6 @@ img {
     .topnav a.icon {
         float: right;
         display: block;
-        margin-top: -15px;
     }
 }
 
@@ -453,7 +464,8 @@ input[data-error]::after {
 .hero-headline {
     font-size: 6rem;
     font-weight: normal;
-    white-space: nowrap;
+    /* white-space: nowrap; */
+    width: 70vw;
 }
 .hero-text {
     width: 146%;
@@ -502,6 +514,7 @@ footer {
         background: #fff;
         color: #000;
         padding: 20px;
+        min-width: auto;
     }
     .hero-content::after {
         content: unset;
@@ -510,8 +523,10 @@ footer {
         display: none;
     }
     .hero-headline {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
+        hyphens: auto;
         white-space: normal;
+        width: auto;
     }
     .hero-text {
         width: unset;
